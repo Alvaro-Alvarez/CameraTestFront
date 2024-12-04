@@ -11,6 +11,10 @@ export class SignalrService {
   public currentFrame: string | null = null;
   public currentFrame2: string | null = null;
   public currentFrame3: string | null = null;
+  public currentFrame4: string | null = null;
+  public currentFrame5: string | null = null;
+  public currentFrame6: string | null = null;
+
 
   private videoChunks: Uint8Array[] = [];
   public mediaSource = new MediaSource();
@@ -29,6 +33,18 @@ export class SignalrService {
 
     this.hubConnection.on('ReceiveFrame3', (frameBase64: string) => {
       this.currentFrame3 = `data:image/jpeg;base64,${frameBase64}`;
+    });
+
+    this.hubConnection.on('ReceiveFrame4', (frameBase64: string) => {
+      this.currentFrame4 = `data:image/jpeg;base64,${frameBase64}`;
+    });
+
+    this.hubConnection.on('ReceiveFrame5', (frameBase64: string) => {
+      this.currentFrame5 = `data:image/jpeg;base64,${frameBase64}`;
+    });
+
+    this.hubConnection.on('ReceiveFrame6', (frameBase64: string) => {
+      this.currentFrame6 = `data:image/jpeg;base64,${frameBase64}`;
     });
   
     this.hubConnection.on('StreamEnded', () => {
