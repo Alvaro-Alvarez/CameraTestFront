@@ -1,0 +1,99 @@
+<!-- Frames de video -->
+<div *ngIf="mode == 'frames'">
+    <!-- <img *ngIf="signalrService.currentFrame" [src]="signalrService.currentFrame" alt="Video Frame" />
+    <p *ngIf="!signalrService.currentFrame">Esperando frames...</p> -->
+
+    <div class="page-container">
+        <div class="video-grid">
+          <div class="video-container">
+            <img *ngIf="signalrService.currentFrame" [src]="signalrService.currentFrame" alt="Video Frame" />
+            <p *ngIf="!signalrService.currentFrame">Esperando frames...</p>
+          </div>
+          <div class="video-container">
+            <img *ngIf="signalrService.currentFrame2" [src]="signalrService.currentFrame2" alt="Video Frame" />
+            <p *ngIf="!signalrService.currentFrame2">Esperando frames...</p>
+          </div>
+          <div class="video-container">
+            <img *ngIf="signalrService.currentFrame3" [src]="signalrService.currentFrame3" alt="Video Frame" />
+            <p *ngIf="!signalrService.currentFrame3">Esperando frames...</p>
+          </div>
+          <!-- <div class="video-container">
+
+          </div>
+          <div class="video-container">
+
+          </div>
+          <div class="video-container">
+
+          </div> -->
+        </div>
+      </div>
+</div>
+
+<!-- Concatenando Blobs -->
+<div *ngIf="mode == 'urlBlob'">
+    <div>
+        <video *ngIf="videoUrl" controls autoplay>
+          <source [src]="videoUrl" type="video/mp4" />
+          Tu navegador no soporta reproducción de video.
+        </video>
+        <p *ngIf="!videoUrl">Esperando video...</p>
+      </div>
+</div>
+
+<!-- Unando MediaSource -->
+<div [hidden]="mode != 'mediasource'">
+    <div class="video-container">
+        <video #videoPlayer controls autoplay></video>
+      </div>      
+</div>
+
+<!-- Rango -->
+<div [hidden]="mode !== 'range'">
+    <!-- <video #videoPlayer width="640" height="360" controls autoplay>
+        <source [src]="'https://localhost:7296/api/test/streamRange'" type="video/mp4" />
+        Tu navegador no soporta reproducción de videos.
+      </video> -->
+      
+      <div class="page-container">
+        <div class="video-grid">
+          <div class="video-container">
+            <!-- <video src="video1.mp4" autoplay muted loop></video> -->
+            <video #videoPlayer width="640" height="360" autoplay loop>
+                <source [src]="'https://localhost:7296/api/test/streamRange'" type="video/mp4" />
+                Tu navegador no soporta reproducción de videos.
+              </video>
+          </div>
+          <div class="video-container">
+            <video #videoPlayer width="640" height="360" autoplay loop>
+                <source [src]="'https://localhost:7296/api/test/streamRange2'" type="video/mp4" />
+                Tu navegador no soporta reproducción de videos.
+              </video>
+          </div>
+          <div class="video-container">
+            <video #videoPlayer width="640" height="360" autoplay loop>
+                <source [src]="'https://localhost:7296/api/test/streamRange3'" type="video/mp4" />
+                Tu navegador no soporta reproducción de videos.
+              </video>
+          </div>
+          <div class="video-container">
+            <video #videoPlayer width="640" height="360" controls autoplay loop>
+                <source [src]="'https://localhost:7296/api/test/streamRange3'" type="video/mp4" />
+                Tu navegador no soporta reproducción de videos.
+              </video>
+          </div>
+          <div class="video-container">
+            <video #videoPlayer width="640" height="360" controls autoplay loop>
+                <source [src]="'https://localhost:7296/api/test/streamRange2'" type="video/mp4" />
+                Tu navegador no soporta reproducción de videos.
+              </video>
+          </div>
+          <div class="video-container">
+            <video #videoPlayer width="640" height="360" controls autoplay loop>
+                <source [src]="'https://localhost:7296/api/test/streamRange'" type="video/mp4" />
+                Tu navegador no soporta reproducción de videos.
+              </video>
+          </div>
+        </div>
+      </div>
+</div>
