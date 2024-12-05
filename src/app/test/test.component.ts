@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { SignalrService } from '../services/signalr.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment';
+import { GeneralService } from '../services/general.service';
 
 @Component({
   selector: 'app-test',
@@ -14,14 +16,17 @@ export class TestComponent implements OnInit, OnDestroy, AfterViewInit {
   videoUrl: SafeUrl | null = null;
   videoUrl2: string = 'https://localhost:7296/api/test/streamRange';
   count = 0;
+  apiURL!: string;
   
   @ViewChild('videoPlayer', { static: true }) videoPlayer!: ElementRef<HTMLVideoElement>;
   private sourceBuffer!: SourceBuffer;
   
   constructor(
     public signalrService: SignalrService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private generalService: GeneralService
   ) {
+    this.apiURL = environment.apiUrl;
   }
   ngAfterViewInit(): void {
     if (this.mode === 'mediasource'){
@@ -37,7 +42,16 @@ export class TestComponent implements OnInit, OnDestroy, AfterViewInit {
   }
   ngOnDestroy(): void {
   }
+  change(mode: any){
+    this.mode = mode;
+  }
+  initFrames(){
+    this.generalService.initFrames().subscribe(res => {
 
+    }, (error => {
+      console.log("error al iniciar frames")
+    }))
+  }
   receiveChunkUrlBlob(){
     this.signalrService.onReceiveChunk((chunk: any) => {
       this.count++;

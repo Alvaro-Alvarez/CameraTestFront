@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  // apiUrl: "http://172.20.67.120/kafkatest/api",
+  apiUrl: "https://localhost:7296/api",
+  apiUrlSignalR: "https://localhost:7296/"
+  // apiUrlSignalR: "http://172.20.67.120/kafkatest/"
 };
 
 /*

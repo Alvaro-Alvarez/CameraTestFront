@@ -1,10 +1,12 @@
 <!-- Frames de video -->
 <div *ngIf="mode == 'frames'">
   <!-- <img *ngIf="signalrService.currentFrame" [src]="signalrService.currentFrame" alt="Video Frame" />
-  <p *ngIf="!signalrService.currentFrame">Esperando frames...</p> -->
-
+    <p *ngIf="!signalrService.currentFrame">Esperando frames...</p> -->
+    
+  <button (click)="change('range')">Cambiar a video</button>
   <div class="page-container">
-      <div class="video-grid">
+    <button class="btn" (click)="initFrames()">Iniciar frames</button>
+    <div class="video-grid">
         <div class="video-container">
           <img *ngIf="signalrService.currentFrame" [src]="signalrService.currentFrame" alt="Video Frame" />
           <p *ngIf="!signalrService.currentFrame">Esperando frames...</p>
@@ -66,61 +68,61 @@
       <source [src]="'https://localhost:7296/api/test/streamRange'" type="video/mp4" />
       Tu navegador no soporta reproducción de videos.
     </video> -->
-    
+    <button (click)="change('frames')">Cambiar a frames</button>
     <div class="page-container">
       <div class="video-grid">
         <div class="video-container">
           <!-- <video src="video1.mp4" autoplay muted loop></video> -->
           <video #videoPlayer width="640" height="360" controls autoplay loop>
-              <source [src]="'https://localhost:7296/api/test/streamRange'" type="video/mp4" />
+              <source [src]="apiURL+'/test/streamRange'" type="video/mp4" />
               Tu navegador no soporta reproducción de videos.
             </video>
         </div>
         <div class="video-container">
           <video #videoPlayer width="640" height="360" controls autoplay loop>
-              <source [src]="'https://localhost:7296/api/test/streamRange2'" type="video/mp4" />
+              <source [src]="apiURL+'/test/streamRange2'" type="video/mp4" />
               Tu navegador no soporta reproducción de videos.
             </video>
         </div>
         <div class="video-container">
           <video #videoPlayer width="640" height="360" controls autoplay loop>
-              <source [src]="'https://localhost:7296/api/test/streamRange3'" type="video/mp4" />
+              <source [src]="apiURL+'/test/streamRange3'" type="video/mp4" />
               Tu navegador no soporta reproducción de videos.
             </video>
         </div>
         <div class="video-container">
           <video #videoPlayer width="640" height="360" controls autoplay loop>
-              <source [src]="'https://localhost:7296/api/test/streamRange3'" type="video/mp4" />
+              <source [src]="apiURL+'/test/streamRange3'" type="video/mp4" />
               Tu navegador no soporta reproducción de videos.
             </video>
         </div>
         <div class="video-container">
           <video #videoPlayer width="640" height="360" controls autoplay loop>
-              <source [src]="'https://localhost:7296/api/test/streamRange2'" type="video/mp4" />
+              <source [src]="apiURL+'/test/streamRange2'" type="video/mp4" />
               Tu navegador no soporta reproducción de videos.
             </video>
         </div>
         <div class="video-container">
           <video #videoPlayer width="640" height="360" controls autoplay loop>
-              <source [src]="'https://localhost:7296/api/test/streamRange'" type="video/mp4" />
+              <source [src]="apiURL+'/test/streamRange'" type="video/mp4" />
               Tu navegador no soporta reproducción de videos.
             </video>
         </div>
         <div class="video-container">
           <video #videoPlayer width="640" height="360" controls autoplay loop>
-              <source [src]="'https://localhost:7296/api/test/streamRange3'" type="video/mp4" />
+              <source [src]="apiURL+'/test/streamRange3'" type="video/mp4" />
               Tu navegador no soporta reproducción de videos.
             </video>
         </div>
         <div class="video-container">
           <video #videoPlayer width="640" height="360" controls autoplay loop>
-              <source [src]="'https://localhost:7296/api/test/streamRange2'" type="video/mp4" />
+              <source [src]="apiURL+'/test/streamRange2'" type="video/mp4" />
               Tu navegador no soporta reproducción de videos.
             </video>
         </div>
         <div class="video-container">
           <video #videoPlayer width="640" height="360" controls autoplay loop>
-              <source [src]="'https://localhost:7296/api/test/streamRange'" type="video/mp4" />
+              <source [src]="apiURL+'/test/streamRange'" type="video/mp4" />
               Tu navegador no soporta reproducción de videos.
             </video>
         </div>
