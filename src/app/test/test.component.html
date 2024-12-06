@@ -1,11 +1,14 @@
 <!-- Frames de video -->
-<div *ngIf="mode == 'frames'">
-  <!-- <img *ngIf="signalrService.currentFrame" [src]="signalrService.currentFrame" alt="Video Frame" />
-    <p *ngIf="!signalrService.currentFrame">Esperando frames...</p> -->
-    
+<div *ngIf="mode == 'frames'">    
   <button (click)="change('range')">Cambiar a video</button>
   <div class="page-container">
+    <!-- <button *ngIf="!framesActive" class="btn" (click)="initFrames()">Iniciar frames</button>
+    <button *ngIf="framesActive" class="btn" (click)="deleteAllThreads()">Detener hilos</button> -->
+
+    
     <button class="btn" (click)="initFrames()">Iniciar frames</button>
+    <button class="btn2" (click)="deleteAllThreads()">Detener hilos</button>
+    
     <div class="video-grid">
         <div class="video-container">
           <img *ngIf="signalrService.currentFrame" [src]="signalrService.currentFrame" alt="Video Frame" />
@@ -31,15 +34,6 @@
           <img *ngIf="signalrService.currentFrame6" [src]="signalrService.currentFrame6" alt="Video Frame" />
           <p *ngIf="!signalrService.currentFrame6">Esperando frames...</p>
         </div>
-        <!-- <div class="video-container">
-
-        </div>
-        <div class="video-container">
-
-        </div>
-        <div class="video-container">
-
-        </div> -->
       </div>
     </div>
 </div>

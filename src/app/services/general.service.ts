@@ -18,4 +18,7 @@ export class GeneralService {
   initFrames(): Observable<any>{
     return this.http.get<any>(`${this.apiUrl}/test/InitAllFrames`);
   }
+  deleteAllThreads(): Observable<any>{
+    return this.http.get<any>(`${this.apiUrl}/test/DeleteAllThreads`);
+  }
 }

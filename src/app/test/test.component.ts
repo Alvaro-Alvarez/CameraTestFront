@@ -17,6 +17,7 @@ export class TestComponent implements OnInit, OnDestroy, AfterViewInit {
   videoUrl2: string = 'https://localhost:7296/api/test/streamRange';
   count = 0;
   apiURL!: string;
+  framesActive: boolean = false;
   
   @ViewChild('videoPlayer', { static: true }) videoPlayer!: ElementRef<HTMLVideoElement>;
   private sourceBuffer!: SourceBuffer;
@@ -44,12 +45,22 @@ export class TestComponent implements OnInit, OnDestroy, AfterViewInit {
   }
   change(mode: any){
     this.mode = mode;
+    if (mode !== 'frames') this.deleteAllThreads();
   }
   initFrames(){
     this.generalService.initFrames().subscribe(res => {
-
+      this.framesActive = true;
     }, (error => {
       console.log("error al iniciar frames")
+    }))
+  }
+
+  deleteAllThreads(){
+    this.generalService.deleteAllThreads().subscribe(res => {
+      this.framesActive = false;
+    }, (error => {
+      console.log(error)
+      console.log("error al detener hilos")
     }))
   }
   receiveChunkUrlBlob(){
